@@ -1,13 +1,11 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+import routes from './routes';
 
 const app = express();
 
-app.get(
-  '/users',
-  (request: Request, response: Response): Response => {
-    return response.json({ ok: true });
-  },
-);
+app.use(express.json());
+
+app.use(routes);
 
 app.listen(3333, () => {
   console.log('🚀 Ecoleta server started on port 3333!');
